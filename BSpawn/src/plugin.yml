@@ -1,0 +1,28 @@
+name: BSpawn
+version: 1.0
+description: Player spawn command
+author: RedstoneFiend
+website: https://github.com/RedstoneFiend/BSpawn
+
+main: io.github.chrisbotcom.bspawn.BSpawn
+database: false
+
+commands:
+    setspawn:
+        description: Set server spawn for new players.
+        usage: /<command>
+        permission: bspawn.setspawn
+        permission-message: You don't have <permission>
+    spawn:
+        description: Teleport self or other player to spawn.
+        usage: /<command> [player]
+
+# Permissions
+permissions:
+    bspawn.*:
+        description: Gives access to all BSpawn commands
+        children:
+            bspawn.setspawn: true
+    bspawn.setspawn:
+        description: Allows you to set server spawn location.
+        default: op
