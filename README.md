@@ -1,0 +1,2 @@
+# BSpawn
+Bukkit Spawn Plugin
