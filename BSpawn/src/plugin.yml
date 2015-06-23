@@ -4,18 +4,28 @@ description: Player spawn command
 author: RedstoneFiend
 website: https://github.com/RedstoneFiend/BSpawn
 
-main: io.github.chrisbotcom.bspawn.BSpawn
+main: io.github.redstonefiend.bspawn.BSpawn
 database: false
 
 commands:
     setspawn:
-        description: Set server spawn for new players.
-        usage: /<command>
+        description: Set server spawn for new players. Optionally force all joining players to spawn.
+        usage: /<command> [force]
         permission: bspawn.setspawn
         permission-message: You don't have <permission>
+    unsetspawn:
+        description: Unset server spawn for new players. Spawn will follow default Minecraft rules.
+        usage: /<command>
+        permission: bspawn.unsetspawn
+        permission-message: You don't have <permission>
     spawn:
-        description: Teleport self or other player to spawn.
-        usage: /<command> [player]
+        description: Teleport to spawn.
+        usage: /<command>
+    spawn reload:
+        description: Reloads BSpawn configuration.
+        usage: /<command>
+        permission: bspawn.reload
+        permission-message: You don't have <permission>
 
 # Permissions
 permissions:
@@ -23,6 +33,18 @@ permissions:
         description: Gives access to all BSpawn commands
         children:
             bspawn.setspawn: true
+            bspawn.spawnother: true
+            bspawn.unsetspawn: true
+            bspawn.reload: true
+    bspawn.spawnother:
+        description: Allows you to teleport other players to spawn.
+        default: op
     bspawn.setspawn:
         description: Allows you to set server spawn location.
+        default: op
+    bspawn.unsetspawn:
+        description: Allows you to unset server spawn location.
+        default: op
+    bspawn.reload:
+        description: Allows you to reload config.yml.
         default: op

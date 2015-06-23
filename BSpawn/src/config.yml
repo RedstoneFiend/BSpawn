@@ -1,0 +1,15 @@
+# BSpawn Configuration - See config.txt for description of values and macros.
+teleport_message: '&eWoosh...'
+teleport_other_message: '&e@s teleported you to spawn.'
+use_team_colors: true
+new_join_commands:
+    - give @p bread 10
+    - give @p emerald 5
+    - scoreboard teams join Default @p
+    - 'tellraw @p ["",{"text":"&eWelcome to the game, @(@p@)&e!","color":"gold"}]'
+    - 'tellraw @a[name!=@p] ["",{"text":"&eWelcome @(@p@)&e to the game!","color":"gold"}]'
+join_commands:
+    - 'tellraw @p ["",{"text":"&eWelcome back, @(@p@)&e!","color":"gold"}]'
+    - 'tellraw @a[name!=@p] ["",{"text":"&eWelcome @(@p@)&e back to the game!","color":"gold"}]'
+quit_commands:
+    - 'tellraw @a ["",{"text":"@(@p@)&e has left the game.","color":"gold"}]'
