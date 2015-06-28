@@ -33,25 +33,23 @@ import org.bukkit.command.CommandSender;
  *
  * @author Chris
  */
-public class UnsetSpawn implements CommandExecutor {
+public class BSpawn implements CommandExecutor {
 
     private final Main plugin;
 
-    public UnsetSpawn(Main plugin) {
+    public BSpawn(Main plugin) {
         this.plugin = plugin;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (args.length != 0) {
-            sender.sendMessage(ChatColor.RED + "unsetspawn takes no arguments.");
-            return false;
+        if ((args.length == 0) || ((args.length == 1) && ((args[0].equalsIgnoreCase("ver") || args[0].equalsIgnoreCase("version"))))) {
+            sender.sendMessage(ChatColor.GOLD + "Boomerang Spawn " + ChatColor.GREEN + "version " + ChatColor.YELLOW + this.plugin.getDescription().getVersion());
+        } else if ((args.length == 1) && (args[0].equalsIgnoreCase("reload"))) {
+            this.plugin.reloadConfig();
+            sender.sendMessage(ChatColor.YELLOW + "BSpawn config reloaded.");
         } else {
-            this.plugin.spawn = null;
-            this.plugin.forceSpawn = false;
-            this.plugin.getConfig().set("spawn", null);
-            this.plugin.saveConfig();
-            sender.sendMessage(ChatColor.YELLOW + "Spawn unset.");
+            return false;
         }
 
         return true;

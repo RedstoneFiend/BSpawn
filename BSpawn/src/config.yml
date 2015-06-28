@@ -1,4 +1,5 @@
-# BSpawn Configuration - See config.txt for description of values and macros.
+# Boomerang Spawn Configuration
+version: 1
 teleport_message: '&eWoosh...'
 teleport_other_message: '&e@s teleported you to spawn.'
 use_team_colors: true

@@ -1,13 +1,18 @@
 name: BSpawn
-version: 1.0
+version: 1.1
 description: Player spawn command
 author: RedstoneFiend
 website: https://github.com/RedstoneFiend/BSpawn
 
-main: io.github.redstonefiend.bspawn.BSpawn
+main: io.github.redstonefiend.bspawn.Main
 database: false
 
 commands:
+    bspawn:
+        description: Reload Boomerand Spawn configuration.
+        usage: /<command> [ver[sion] | reload]
+        permission: bspawn.bspawn
+        permission-message: You don't have <permission>
     setspawn:
         description: Set server spawn for new players. Optionally force all joining players to spawn.
         usage: /<command> [force]
@@ -32,10 +37,14 @@ permissions:
     bspawn.*:
         description: Gives access to all BSpawn commands
         children:
+            bspawn.bspawn: true
             bspawn.setspawn: true
             bspawn.spawnother: true
             bspawn.unsetspawn: true
             bspawn.reload: true
+    bspawn.bspawn:
+        description: Allows you to access administrative commands.
+        default: op
     bspawn.spawnother:
         description: Allows you to teleport other players to spawn.
         default: op

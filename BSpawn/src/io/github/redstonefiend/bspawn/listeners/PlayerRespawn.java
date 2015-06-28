@@ -24,37 +24,30 @@
 package io.github.redstonefiend.bspawn.listeners;
 
 import io.github.redstonefiend.bspawn.Main;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.scoreboard.Team;
+import org.bukkit.event.player.PlayerRespawnEvent;
 
 /**
  *
  * @author chrisbot
  */
-public class PlayerChat implements Listener {
+public class PlayerRespawn implements Listener {
 
     private final Main plugin;
 
-    public PlayerChat(Main plugin) {
+    public PlayerRespawn(Main plugin) {
         this.plugin = plugin;
     }
 
-    @SuppressWarnings("deprecation")
     @EventHandler
-    public void onPlayerChat(AsyncPlayerChatEvent e) {
-        if (this.plugin.getConfig().getBoolean("use_team_colors")) {
-            Player player = e.getPlayer();
+    public void onPlayerRespawn(PlayerRespawnEvent e) {
+        Player player = e.getPlayer();
 
-            String message = e.getMessage();
-            Team team = plugin.getServer().getScoreboardManager().getMainScoreboard().getPlayerTeam(player);
-            if (team != null) {
-                String prefix = team.getPrefix();
-                String suffix = team.getSuffix();
-                e.setFormat(ChatColor.RESET + "<" + prefix + player.getDisplayName() + suffix + ">" + " " + message);
+        if (!e.isBedSpawn()) {
+            if (plugin.spawn != null) {
+                e.setRespawnLocation(plugin.spawn);
             }
         }
     }

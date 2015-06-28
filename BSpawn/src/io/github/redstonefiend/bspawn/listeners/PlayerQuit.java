@@ -23,7 +23,7 @@
  */
 package io.github.redstonefiend.bspawn.listeners;
 
-import io.github.redstonefiend.bspawn.BSpawn;
+import io.github.redstonefiend.bspawn.Main;
 import java.util.List;
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
@@ -38,9 +38,9 @@ import org.bukkit.scoreboard.Team;
  */
 public class PlayerQuit implements Listener {
 
-    private final BSpawn plugin;
+    private final Main plugin;
 
-    public PlayerQuit(BSpawn plugin) {
+    public PlayerQuit(Main plugin) {
         this.plugin = plugin;
     }
 

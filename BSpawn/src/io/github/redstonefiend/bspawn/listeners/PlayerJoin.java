@@ -23,7 +23,7 @@
  */
 package io.github.redstonefiend.bspawn.listeners;
 
-import io.github.redstonefiend.bspawn.BSpawn;
+import io.github.redstonefiend.bspawn.Main;
 import java.util.List;
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
@@ -38,9 +38,9 @@ import org.bukkit.scoreboard.Team;
  */
 public class PlayerJoin implements Listener {
 
-    private final BSpawn plugin;
+    private final Main plugin;
 
-    public PlayerJoin(BSpawn plugin) {
+    public PlayerJoin(Main plugin) {
         this.plugin = plugin;
     }
 
@@ -51,9 +51,9 @@ public class PlayerJoin implements Listener {
         Server server = this.plugin.getServer();
 
         List<String> commands;
-        if ((player.getLastPlayed() == 0) || this.plugin.isForceSpawn()) {
-            if (this.plugin.getSpawn() != null) {
-                player.teleport(this.plugin.getSpawn());
+        if ((player.getLastPlayed() == 0) || this.plugin.forceSpawn) {
+            if (this.plugin.spawn != null) {
+                player.teleport(this.plugin.spawn);
             }
             commands = (List<String>) this.plugin.getConfig().getList("new_join_commands");
         } else {
